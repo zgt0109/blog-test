@@ -22,7 +22,7 @@ class ApplicationController < ActionController::Base
 
   def authenticate
   	unless sign_in?
-  		redirect_to sign_in_path
+  		redirect_to sign_in_path, notice: "请登录之后再操作."
   	end
   end
 end
