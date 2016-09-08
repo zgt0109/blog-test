@@ -19,4 +19,6 @@ class Topic < ActiveRecord::Base
   attr_accessible :content, :name
 
   validates :name, presence: true
+
+  paginates_per 3
 end

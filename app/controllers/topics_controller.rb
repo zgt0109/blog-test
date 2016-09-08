@@ -3,7 +3,7 @@ class TopicsController < ApplicationController
 	before_filter :find_topic, only: [:show, :edit, :update, :destroy]
 
   def index
-  	@topics = current_user.topics.all
+  	@topics = current_user.topics.page(params[:page]) 
   end
 
   def show

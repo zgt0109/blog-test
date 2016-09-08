@@ -9,6 +9,7 @@ gem 'mysql2', '0.3.10'
 gem 'slim-rails'
 gem 'annotate'
 gem 'pry-rails'
+gem 'kaminari'
 
 
 # Gems used only for assets and not required
