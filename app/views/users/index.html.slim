@@ -5,20 +5,14 @@ table
     tr
       th Name
       th Email
-      th Doctor
-      th
-      th
-      th
+      th 给病人看过病的医生
 
   tbody
     - @users.each do |u|
       tr
         td = u.name
         td = u.email
-        td = u.doctors
-        td 
-        td 
-        td 
+        td = find_all_doctor(u)
 
 = paginate @users
 
