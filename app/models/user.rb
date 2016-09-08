@@ -15,6 +15,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :name, :password, :password_confirmation, :current_password
   has_secure_password
   has_many :posts
+  has_many :topics
 
   validates :name, presence: true
   validates :email, presence: true

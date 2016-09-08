@@ -1,0 +1,12 @@
+h1 Topics#show
+p Find me in app/views/topics/show.html.slim
+
+p 
+	b Name:
+ 	= @topic.name
+
+p 
+  b Content:
+  = @topic.content
+  
+= link_to 'Back', topics_path

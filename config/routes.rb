@@ -18,6 +18,9 @@ Blog::Application.routes.draw do
 
   get '/sign_out', to: 'sessions#destroy'
 
+
+  resources :topics
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
