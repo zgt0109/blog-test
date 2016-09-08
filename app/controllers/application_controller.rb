@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   before_filter :authenticate
 
   def sign_in?
-  	session[:user_id] != nil
+    current_user
   end
 
   def sign_out
@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user
-  	User.find(session[:user_id]) if session[:user_id]
+  	@current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
 
   def authenticate

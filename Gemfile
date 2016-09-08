@@ -8,6 +8,7 @@ gem 'rails', '3.2.22.2'
 gem 'mysql2', '0.3.10'
 gem 'slim-rails'
 gem 'annotate'
+gem 'pry-rails'
 
 
 # Gems used only for assets and not required

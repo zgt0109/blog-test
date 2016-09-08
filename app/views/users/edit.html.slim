@@ -1,0 +1,15 @@
+= form_for(@current_user, :url => users_profile_path, method: :put) do |f|
+  .field
+    = f.label :current_password
+    = f.password_field :current_password
+
+  .field 
+    = f.label :password
+    = f.password_field :password
+
+  .field
+    = f.label :password_confirmation
+    = f.password_field :password_confirmation
+
+  .action
+    = f.submit "Update"

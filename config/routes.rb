@@ -5,10 +5,10 @@ Blog::Application.routes.draw do
 
   root to: 'home#index'
 
-  resources :users do
-    get :info, on: :collection
-  end
-  resources :sessions, only: [:new, :create, :destroy]
+  get '/users/info', to: 'users#info'
+
+  get '/users/profile', to: 'users#edit'
+  put '/users/profile', to: 'users#update'
 
   get '/sign_up', to: 'users#new'
   post '/sign_up', to: 'users#create'
