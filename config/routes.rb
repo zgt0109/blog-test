@@ -5,7 +5,9 @@ Blog::Application.routes.draw do
 
   root to: 'home#index'
 
-  resources :users
+  resources :users do
+    get :info, on: :collection
+  end
   resources :sessions, only: [:new, :create, :destroy]
 
   get '/sign_up', to: 'users#new'
