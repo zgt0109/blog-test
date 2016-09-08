@@ -5,10 +5,10 @@ Blog::Application.routes.draw do
 
   root to: 'home#index'
 
-  get '/users/info', to: 'users#info'
+  get '/users/info', to: 'profile#info'
 
-  get '/users/profile', to: 'users#edit'
-  put '/users/profile', to: 'users#update'
+  get '/users/profile', to: 'profile#edit'
+  put '/users/profile', to: 'profile#update'
 
   get '/sign_up', to: 'users#new'
   post '/sign_up', to: 'users#create'
