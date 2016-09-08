@@ -17,6 +17,11 @@ class User < ActiveRecord::Base
   has_many :posts
   has_many :topics
 
+  paginates_per 2
+
+  has_many :cases
+  has_many :doctors, :through => :cases
+
   validates :name, presence: true
   validates :email, presence: true
 

@@ -1,0 +1,29 @@
+h1 病人病历
+
+table
+  thead
+    tr
+      th 病人姓名
+      th 病的种类
+      th 病历内容
+      th 主治医生
+      th
+      th
+      th
+
+  tbody
+    - @cases.each do |c|
+      tr
+        td = c.user.name
+        td = c.name
+        td = c.content
+        td = c.doctor.name
+        td = link_to 'Show', c
+        td = link_to 'Edit', edit_case_path(c)
+        td = link_to 'Delete', c, :method => 'delete', :data => { :confirm => 'Are you Sure?' }
+
+br
+
+= link_to 'New', new_case_path
+'|
+= link_to '首页', root_path

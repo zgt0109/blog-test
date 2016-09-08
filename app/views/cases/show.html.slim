@@ -1,0 +1,17 @@
+p 
+	b 病人姓名:
+ 	= @case.user.name
+p 
+  b 病的种类:
+  = @case.name
+
+
+p 
+  b 病历内容:
+  = @case.content
+
+p 
+	b 主治医生:
+ 	= @case.doctor.name
+  
+= link_to 'Back', cases_path

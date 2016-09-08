@@ -11,7 +11,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20160908080409) do
+ActiveRecord::Schema.define(:version => 20160908100637) do
+
+  create_table "cases", :force => true do |t|
+    t.text     "content"
+    t.integer  "user_id"
+    t.integer  "doctor_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.string   "name"
+  end
+
+  add_index "cases", ["doctor_id"], :name => "index_cases_on_doctor_id"
+  add_index "cases", ["user_id"], :name => "index_cases_on_user_id"
 
   create_table "comments", :force => true do |t|
     t.string   "commenter"
@@ -22,6 +34,12 @@ ActiveRecord::Schema.define(:version => 20160908080409) do
   end
 
   add_index "comments", ["post_id"], :name => "index_comments_on_post_id"
+
+  create_table "doctors", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "posts", :force => true do |t|
     t.string   "name"

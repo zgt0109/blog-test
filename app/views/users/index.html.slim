@@ -1,0 +1,29 @@
+h1 User＃ 病人列表
+
+table
+  thead
+    tr
+      th Name
+      th Email
+      th Doctor
+      th
+      th
+      th
+
+  tbody
+    - @users.each do |u|
+      tr
+        td = u.name
+        td = u.email
+        td = u.doctors
+        td 
+        td 
+        td 
+
+= paginate @users
+
+br
+
+= link_to 'New', new_user_path
+'|
+= link_to '首页', root_path

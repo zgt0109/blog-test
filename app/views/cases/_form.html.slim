@@ -1,0 +1,18 @@
+= form_for(@case) do |f|
+	.field
+		= f.label :name, "病的种类"
+		= f.text_field :name
+	.field 
+		= f.label :content
+		= f.text_area :content
+
+	.field
+		= f.label :user_id
+		= f.select :user_id, User.all.collect{ |u| [u.name, u.id] }
+
+	.field
+		= f.label :doctor_id
+		= f.select :doctor_id, Doctor.all.collect{ |d| [d.name, d.id] }
+
+	.action
+		= f.submit "Submit"

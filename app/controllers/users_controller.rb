@@ -1,6 +1,10 @@
 class UsersController < ApplicationController
 	skip_before_filter :authenticate, only: [:new, :create]
 
+  def index
+    @users = User.page params[:page]
+  end
+
   def new
   	@user = User.new
   end
