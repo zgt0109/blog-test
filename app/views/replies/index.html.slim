@@ -1,0 +1,23 @@
+h1 Listing replies
+
+table
+  thead
+    tr
+      th Name
+      th Content
+      th
+      th
+      th
+
+  tbody
+    - @replies.each do |reply|
+      tr
+        td = reply.name
+        td = reply.content
+        td = link_to 'Show', reply
+        td = link_to 'Edit', edit_reply_path(reply)
+        td = link_to 'Destroy', reply, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Reply', new_reply_path

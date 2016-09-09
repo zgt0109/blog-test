@@ -1,0 +1,12 @@
+p#notice = notice
+
+p
+  strong Name:
+  = @reply.name
+p
+  strong Content:
+  = @reply.content
+
+= link_to 'Edit', edit_reply_path(@reply)
+'|
+= link_to 'Back', replies_path

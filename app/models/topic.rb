@@ -1,20 +1,11 @@
-# == Schema Information
-#
-# Table name: topics
-#
-#  id         :integer          not null, primary key
-#  user_id    :integer
-#  name       :string(255)
-#  content    :text
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#
-# Indexes
-#
-#  index_topics_on_user_id  (user_id)
-#
+class Topic
+	include Mongoid::Document
+	include Mongoid::Timestamps
 
-class Topic < ActiveRecord::Base
+	field :user_id
+	field :name, type: String
+	field :content, type: String
+
   belongs_to :user
   attr_accessible :content, :name
 

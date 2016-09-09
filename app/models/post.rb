@@ -1,17 +1,12 @@
-# == Schema Information
-#
-# Table name: posts
-#
-#  id         :integer          not null, primary key
-#  name       :string(255)
-#  title      :string(255)
-#  content    :text
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  user_id    :integer
-#
+class Post
+	include Mongoid::Document
+	include Mongoid::Timestamps
 
-class Post < ActiveRecord::Base
+	field :user_id
+	field :name, type: String
+	field :title, type: String
+	field :content, type: String
+
   attr_accessible :content, :name, :title, :tags_attributes
 
   validates :name, :presence => true

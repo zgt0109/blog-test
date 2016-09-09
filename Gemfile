@@ -2,10 +2,13 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.22.2'
 
+gem 'mongoid', '~> 3.0.0'
+gem 'bson_ext'
+
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'mysql2', '0.3.10'
+# gem 'mysql2', '0.3.10'
 gem 'slim-rails'
 gem 'annotate'
 gem 'pry-rails'

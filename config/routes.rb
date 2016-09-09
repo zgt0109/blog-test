@@ -1,4 +1,7 @@
 Blog::Application.routes.draw do
+  resources :replies
+
+
   resources :posts do
     resources :comments
   end

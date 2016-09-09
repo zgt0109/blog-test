@@ -1,19 +1,10 @@
-# == Schema Information
-#
-# Table name: tags
-#
-#  id         :integer          not null, primary key
-#  name       :string(255)
-#  post_id    :integer
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#
-# Indexes
-#
-#  index_tags_on_post_id  (post_id)
-#
+class Tag
+	include Mongoid::Document
+	include Mongoid::Timestamps
+	
+	field :post_id
+	field :name, type: String
 
-class Tag < ActiveRecord::Base
   belongs_to :post
   attr_accessible :name
 end
