@@ -2,7 +2,7 @@ Blog::Application.routes.draw do
   resources :posts do
     resources :comments
   end
-
+  
   root to: 'home#index'
 
   get '/users/info', to: 'profile#info'
@@ -20,8 +20,8 @@ Blog::Application.routes.draw do
 
   resources :users
   resources :topics
-  resources :cases
   resources :doctors
+  resources :diseases
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

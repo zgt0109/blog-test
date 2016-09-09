@@ -11,6 +11,6 @@
 class Doctor < ActiveRecord::Base
   attr_accessible :name
 
-  has_many :cases
-  has_many :users, :through => :cases
+  has_many :diseases
+  has_many :users, :through => :diseases
 end

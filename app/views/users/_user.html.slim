@@ -1,0 +1,15 @@
+tr
+  td = user.name
+  td = user.email
+  td 
+    - user.doctors.each do |doctor|
+      span
+        = doctor.name + " "
+
+  td 
+    - user.diseases.each do |disease|
+      span 
+        = disease.name + "-"
+        = disease.content
+      br
+/ user.doctors.map(&:name).join(", ")

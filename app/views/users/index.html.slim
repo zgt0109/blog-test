@@ -6,13 +6,10 @@ table
       th Name
       th Email
       th 给病人看过病的医生
+      th 病情
 
   tbody
-    - @users.each do |u|
-      tr
-        td = u.name
-        td = u.email
-        td = find_all_doctor(u)
+    = render @users
 
 = paginate @users
 

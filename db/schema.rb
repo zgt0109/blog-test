@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20160908100637) do
+ActiveRecord::Schema.define(:version => 20160909025950) do
 
   create_table "cases", :force => true do |t|
     t.text     "content"
@@ -34,6 +34,18 @@ ActiveRecord::Schema.define(:version => 20160908100637) do
   end
 
   add_index "comments", ["post_id"], :name => "index_comments_on_post_id"
+
+  create_table "diseases", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "doctor_id"
+    t.string   "name"
+    t.text     "content"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "diseases", ["doctor_id"], :name => "index_diseases_on_doctor_id"
+  add_index "diseases", ["user_id"], :name => "index_diseases_on_user_id"
 
   create_table "doctors", :force => true do |t|
     t.string   "name"

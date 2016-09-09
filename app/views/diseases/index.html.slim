@@ -12,18 +12,18 @@ table
       th
 
   tbody
-    - @cases.each do |c|
+    - @diseases.each do |c|
       tr
         td = c.user.name
         td = c.name
         td = c.content
         td = c.doctor.name
         td = link_to 'Show', c
-        td = link_to 'Edit', edit_case_path(c)
+        td = link_to 'Edit', edit_disease_path(c)
         td = link_to 'Delete', c, :method => 'delete', :data => { :confirm => 'Are you Sure?' }
 
 br
 
-= link_to 'New', new_case_path
+= link_to 'New', new_disease_path
 '|
 = link_to '首页', root_path

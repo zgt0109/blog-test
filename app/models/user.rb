@@ -19,8 +19,8 @@ class User < ActiveRecord::Base
 
   paginates_per 2
 
-  has_many :cases
-  has_many :doctors, :through => :cases
+  has_many :diseases
+  has_many :doctors, :through => :diseases
 
   validates :name, presence: true
   validates :email, presence: true

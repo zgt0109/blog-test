@@ -1,0 +1,17 @@
+p 
+	b 病人姓名:
+ 	= @disease.user.name
+p 
+  b 病的种类:
+  = @disease.name
+
+
+p 
+  b 病历内容:
+  = @disease.content
+
+p 
+	b 主治医生:
+ 	= @disease.doctor.name
+  
+= link_to 'Back', diseases_path
