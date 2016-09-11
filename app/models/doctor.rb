@@ -7,5 +7,9 @@ class Doctor
   attr_accessible :name
 
   has_many :diseases
+
+  def users
+  	User.in(id: diseases.map(&:user_id))
+  end
   ###
 end

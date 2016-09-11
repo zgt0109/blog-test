@@ -15,6 +15,9 @@ class User
 
   has_many :diseases
   ###
+  def doctors
+    Doctor.in(id: diseases.map(&:doctor_id))
+  end
 
   paginates_per 2
 
