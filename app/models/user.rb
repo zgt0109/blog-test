@@ -12,6 +12,7 @@ class User
   attr_accessible :email, :name, :password, :password_confirmation, :current_password
   has_secure_password
   has_many :topics
+  has_many :posts
 
   has_many :diseases
   ###

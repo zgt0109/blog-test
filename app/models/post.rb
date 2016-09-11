@@ -7,7 +7,7 @@ class Post
 	field :title, type: String
 	field :content, type: String
 
-  attr_accessible :content, :name, :title, :tags_attributes
+  attr_accessible :content, :name, :title, :tags_attributes, :user_id
 
   validates :name, :presence => true
   validates :title, :presence => true, :length => { :minimum => 5 }
