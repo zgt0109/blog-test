@@ -11,16 +11,26 @@ class TopicsController < ApplicationController
   end
 
   def new
-  	@topic = Topic.new
+    respond_to do |format|
+      format.html
+      format.js{
+        render nothing: true, status:200
+      }
+    end
   end
 
   def create
   	@topic = current_user.topics.build(params[:topic])
-  	if @topic.save
-  		redirect_to @topic
-  	else
-  		render 'new'
-  	end
+    respond_to do |format|
+      if @topic.save
+        format.html { redirect_to @topic }
+        format.js
+      else
+        format.html { render 'new' }
+        format.js
+      end
+    end
+  	
   end
 
   def edit

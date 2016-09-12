@@ -23,6 +23,20 @@ table
 
 br
 
-= link_to 'New', new_topic_path
-'|
+.topic-new
+  = link_to 'New', new_topic_path
+
 = link_to '首页', root_path
+
+
+javascript:
+  $(document).ready(function(){
+    $(".topic-new a").click(function(event){
+      event.preventDefault();
+      $.get("/topics/new",function(data){
+        alert('1');
+        $(".topic-new").html("#{ j(render 'form') }");
+      },'script');
+    });
+  });
+
