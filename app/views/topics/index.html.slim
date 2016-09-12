@@ -33,9 +33,8 @@ javascript:
   $(document).ready(function(){
     $(".topic-new a").click(function(event){
       event.preventDefault();
-      $.get("/topics/new",function(data){
-        alert('1');
-        $(".topic-new").html("#{ j(render 'form') }");
+      $.get("/topics/new",function(){
+        alert("123")
       },'script');
     });
   });

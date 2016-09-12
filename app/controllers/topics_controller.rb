@@ -13,9 +13,7 @@ class TopicsController < ApplicationController
   def new
     respond_to do |format|
       format.html
-      format.js{
-        render nothing: true, status:200
-      }
+      format.js
     end
   end
 
