@@ -6,7 +6,7 @@ class User
   field :name, type: String
   field :email, type: String
   field :password_digest, type: String
-
+  field :auth_token, type: String 
 
 	attr_accessor :current_password
   attr_accessible :email, :name, :password, :password_confirmation, :current_password

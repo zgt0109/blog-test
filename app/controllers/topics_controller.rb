@@ -2,8 +2,13 @@ class TopicsController < ApplicationController
 
 	before_filter :find_topic, only: [:show, :edit, :update, :destroy]
 
+  before_filter :authenticate_token
   def index
   	@topics = current_user.topics.page(params[:page]) 
+    respond_to do |format|
+      format.html
+      format.json { render json: @topics }
+    end
   end
 
   def show
@@ -46,6 +51,12 @@ class TopicsController < ApplicationController
   	@topic.destroy
   	redirect_to topics_path
   end
+
+  protected
+    def authenticate_token
+      @current_user = User.where(auth_token: request.headers['token']).first
+      render nothing: true, status: 401 unless @current_user
+    end
 
   private	
   	def find_topic

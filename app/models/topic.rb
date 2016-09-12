@@ -12,4 +12,5 @@ class Topic
   validates :name, presence: true
 
   paginates_per 3
+
 end
