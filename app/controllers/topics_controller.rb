@@ -12,12 +12,16 @@ class TopicsController < ApplicationController
   end
 
   def show
-
+    respond_to do |format|
+      format.html
+      format.json{ render json: @topic }
+    end
   end
 
   def new
     respond_to do |format|
       format.html
+      format.json{ render json: @topic }
       format.js
     end
   end
@@ -27,9 +31,11 @@ class TopicsController < ApplicationController
     respond_to do |format|
       if @topic.save
         format.html { redirect_to @topic }
+        format.json { render json: @topic, status: :created }
         format.js
       else
         format.html { render 'new' }
+        format.json { render json: @topic.errors }
         format.js
       end
     end
@@ -40,16 +46,23 @@ class TopicsController < ApplicationController
   end
 
   def update
-  	if @topic.update_attributes(params[:topic])
-  		redirect_to @topic
-  	else
-  		render 'edit'
-  	end
+    respond_to do |format|
+      if @topic.update_attributes(params[:topic])
+        format.html { redirect_to @topic }
+        format.json { head :no_content }
+      else
+        format.html { render 'edit' }
+        format.json { render json: @topic.errors }
+      end
+    end
   end
 
   def destroy
   	@topic.destroy
-  	redirect_to topics_path
+    respond_to do |format|
+      format.html { redirect_to topics_path }
+      format.json { head :no_content }
+    end
   end
 
   protected

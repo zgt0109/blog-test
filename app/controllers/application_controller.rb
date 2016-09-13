@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   helper_method :sign_in?, :current_user
- # before_filter :authenticate_user
+  before_filter :authenticate_user
 
   def sign_in?
     current_user
@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user
-  	@current_user ||= User.find(session[:user_id])
+  	@current_user ||= User.where(session[:user_id])
   end
 
   def authenticate_user
