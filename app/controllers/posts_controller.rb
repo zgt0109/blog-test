@@ -13,7 +13,7 @@ class PostsController < ApplicationController
   # GET /posts/1
   # GET /posts/1.json
   def show
-    @post = Post.find(params[:id])
+    @post = Post.get(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -72,7 +72,7 @@ class PostsController < ApplicationController
   # DELETE /posts/1
   # DELETE /posts/1.json
   def destroy
-    @post = Post.find(params[:id])
+    @post = Post.get(params[:id])
     @post.destroy
 
     respond_to do |format|

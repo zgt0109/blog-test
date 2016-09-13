@@ -4,6 +4,8 @@ class Doctor
 
 	property :id, Serial
 	property :name, String
+	property :created_at, DateTime, :default => DateTime.now
+	property :updated_at, DateTime, :default => DateTime.now
 
   attr_accessible :name
 

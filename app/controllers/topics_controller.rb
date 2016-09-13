@@ -3,8 +3,7 @@ class TopicsController < ApplicationController
 	before_filter :find_topic, only: [:show, :edit, :update, :destroy]
 
   def index
-  	# @topics = current_user.topics.page(params[:page])
-    @topics = Topic.all
+  	@topics = Topic.all
   end
 
   def show
@@ -28,7 +27,7 @@ class TopicsController < ApplicationController
   end
 
   def update
-  	if @topic.update_attributes(params[:topic])
+  	if @topic.update(params[:topic])
   		redirect_to @topic
   	else
   		render 'edit'
@@ -42,6 +41,6 @@ class TopicsController < ApplicationController
 
   private	
   	def find_topic
-  		@topic = Topic.find params[:id]
+  		@topic = Topic.get(params[:id])
   	end
 end

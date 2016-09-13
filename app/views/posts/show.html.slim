@@ -11,10 +11,8 @@ p
   = @post.content
 
 h2 Comments
-= render partial: 'comments/comment', collection: @post.comments
 
 h2 Add a comment:
-= render 'comments/form'
 
 = link_to 'Edit', edit_post_path(@post)
 '|
