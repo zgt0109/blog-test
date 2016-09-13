@@ -3,7 +3,8 @@ class TopicsController < ApplicationController
 	before_filter :find_topic, only: [:show, :edit, :update, :destroy]
 
   def index
-  	@topics = current_user.topics.page(params[:page]) 
+  	# @topics = current_user.topics.page(params[:page])
+    @topics = Topic.all
   end
 
   def show
@@ -15,7 +16,7 @@ class TopicsController < ApplicationController
   end
 
   def create
-  	@topic = current_user.topics.build(params[:topic])
+  	@topic = Topic.new(params[:topic])
   	if @topic.save
   		redirect_to @topic
   	else

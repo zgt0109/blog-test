@@ -1,28 +1,24 @@
-# == Schema Information
-#
-# Table name: users
-#
-#  id              :integer          not null, primary key
-#  name            :string(255)
-#  email           :string(255)
-#  password_digest :string(255)
-#  created_at      :datetime         not null
-#  updated_at      :datetime         not null
-#
+class User
+  include DataMapper::Resource
+  include DataMapper::MassAssignmentSecurity
+  include ActiveModel::SecurePassword
 
-class User < ActiveRecord::Base
-	attr_accessor :current_password
-  attr_accessible :email, :name, :password, :password_confirmation, :current_password
+  property :id, Serial
+  property :name, String
+  property :email, String
+  property :password_digest, String
+
   has_secure_password
-  has_many :posts
-  has_many :topics
+	attr_accessor :current_password, :password_confirmation
+  attr_accessible :email, :name, :password, :password_confirmation, :current_password
+  
+  has n, :posts
+  has n, :topics
 
   paginates_per 2
 
-  has_many :diseases
-  has_many :doctors, :through => :diseases
+  has n, :diseases
+  has n, :doctors, :through => :diseases
 
-  validates :name, presence: true
-  validates :email, presence: true
-
+  validates_presence_of :name, :email
 end

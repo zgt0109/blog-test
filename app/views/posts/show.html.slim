@@ -10,10 +10,6 @@ p
   strong Content:
   = @post.content
 
-p
-  b Tag:
-  = join_tags(@post)
-
 h2 Comments
 = render partial: 'comments/comment', collection: @post.comments
 

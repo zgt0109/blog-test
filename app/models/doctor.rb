@@ -1,16 +1,12 @@
-# == Schema Information
-#
-# Table name: doctors
-#
-#  id         :integer          not null, primary key
-#  name       :string(255)
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#
+class Doctor
+	include DataMapper::Resource
+	include DataMapper::MassAssignmentSecurity
 
-class Doctor < ActiveRecord::Base
+	property :id, Serial
+	property :name, String
+
   attr_accessible :name
 
-  has_many :diseases
-  has_many :users, :through => :diseases
+  has n, :diseases
+  has n, :users, :through => :diseases
 end

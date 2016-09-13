@@ -1,24 +1,20 @@
-# == Schema Information
-#
-# Table name: posts
-#
-#  id         :integer          not null, primary key
-#  name       :string(255)
-#  title      :string(255)
-#  content    :text
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  user_id    :integer
-#
+class Post
+	include DataMapper::Resource
+	include DataMapper::MassAssignmentSecurity
 
-class Post < ActiveRecord::Base
-  attr_accessible :content, :name, :title, :tags_attributes
+	property :id, Serial
+	property :name, String
+	property :title, String
+	property :content, Text
+	property :created_at, DateTime, :default => DateTime.now
+	property :updated_at, DateTime, :default => DateTime.now
+	property :user_id, Integer
 
-  validates :name, :presence => true
-  validates :title, :presence => true, :length => { :minimum => 5 }
-  has_many :comments, :dependent => :destroy
-  has_many :tags
+  attr_accessible :content, :name, :title, :user_id
+
+  validates_presence_of :name, :title 
+  validates_length_of :title, :minimum => 5
+
+  has n, :comments, :dependent => :destroy
   belongs_to :user
-
-  accepts_nested_attributes_for :tags, :allow_destroy => :true, :reject_if => proc { |attrs| attrs.all? { |k,v| v.blank? } }
 end

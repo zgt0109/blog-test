@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = current_user.posts.all
+    @posts = Post.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -40,7 +40,7 @@ class PostsController < ApplicationController
   # POST /posts
   # POST /posts.json
   def create
-    @post = current_user.posts.build(params[:post])
+    @post = Post.new(params[:post])
 
     respond_to do |format|
       if @post.save

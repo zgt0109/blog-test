@@ -1,23 +1,15 @@
-# == Schema Information
-#
-# Table name: diseases
-#
-#  id         :integer          not null, primary key
-#  user_id    :integer
-#  doctor_id  :integer
-#  name       :string(255)
-#  content    :text
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#
-# Indexes
-#
-#  index_diseases_on_doctor_id  (doctor_id)
-#  index_diseases_on_user_id    (user_id)
-#
+class Disease
+	include DataMapper::Resource
+	include DataMapper::MassAssignmentSecurity
 
-class Disease < ActiveRecord::Base
+	property :id, Serial
+	property :user_id, Integer
+	property :doctor_id, Integer
+	property :name, String
+	property :content, Text
+	
   belongs_to :user
   belongs_to :doctor
+
   attr_accessible :content, :name, :user_id, :doctor_id
 end

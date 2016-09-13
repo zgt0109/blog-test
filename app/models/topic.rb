@@ -1,24 +1,16 @@
-# == Schema Information
-#
-# Table name: topics
-#
-#  id         :integer          not null, primary key
-#  user_id    :integer
-#  name       :string(255)
-#  content    :text
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#
-# Indexes
-#
-#  index_topics_on_user_id  (user_id)
-#
+class Topic
+	include DataMapper::Resource
+	include DataMapper::MassAssignmentSecurity
 
-class Topic < ActiveRecord::Base
+	property :id, Serial
+	property :user_id, Integer
+	property :name, String
+	property :content, Text
+
   belongs_to :user
-  attr_accessible :content, :name
+  attr_accessible :content, :name, :user_id
 
-  validates :name, presence: true
+  validates_presence_of :name
 
   paginates_per 3
 end

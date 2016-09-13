@@ -9,7 +9,21 @@ table
       th 病情
 
   tbody
-    = render @users
+    - @users.each do |user|
+      tr
+        td = user.name
+        td = user.email
+        td 
+          - user.doctors.each do |doctor|
+            span
+              = doctor.name + " "
+
+        td 
+          - user.diseases.each do |disease|
+            span 
+              = disease.name + "-"
+              = disease.content
+            br
 
 = paginate @users
 
