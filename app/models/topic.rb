@@ -14,5 +14,5 @@ class Topic
 
   validates_presence_of :name
 
-  paginates_per 3
+  paginates_per 2
 end

@@ -11,7 +11,8 @@ class User
   property :updated_at, DateTime, :default => DateTime.now
 
   has_secure_password
-	attr_accessor :current_password, :password, :password_confirmation
+	attr_accessor :current_password, :password_confirmation
+  attr_reader :password
   attr_accessible :email, :name, :password, :password_confirmation, :current_password
   
   has n, :posts

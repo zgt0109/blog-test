@@ -10,4 +10,4 @@ table
     - @doctors.each do |d|
       tr
         td = d.name
-        td = d.users.map(&:name)
+        td = d.users.map(&:name).join(", ")

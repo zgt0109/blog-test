@@ -11,8 +11,10 @@ p
   = @post.content
 
 h2 Comments
+= render @post.comments
 
 h2 Add a comment:
+= render 'comments/form'
 
 = link_to 'Edit', edit_post_path(@post)
 '|

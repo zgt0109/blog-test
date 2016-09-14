@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all
+    @posts = current_user.posts.page params[:page]
 
     respond_to do |format|
       format.html # index.html.erb
@@ -34,13 +34,13 @@ class PostsController < ApplicationController
 
   # GET /posts/1/edit
   def edit
-    @post = Post.find(params[:id])
+    @post = Post.get(params[:id])
   end
 
   # POST /posts
   # POST /posts.json
   def create
-    @post = Post.new(params[:post])
+    @post = current_user.posts.new(params[:post])
 
     respond_to do |format|
       if @post.save
@@ -56,10 +56,10 @@ class PostsController < ApplicationController
   # PUT /posts/1
   # PUT /posts/1.json
   def update
-    @post = Post.find(params[:id])
+    @post = Post.get(params[:id])
 
     respond_to do |format|
-      if @post.update_attributes(params[:post])
+      if @post.update(params[:post])
         format.html { redirect_to @post, notice: 'Post was successfully updated.' }
         format.json { head :no_content }
       else

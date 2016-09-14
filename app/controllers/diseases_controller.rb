@@ -24,7 +24,7 @@ class DiseasesController < ApplicationController
 	end
 
 	def update
-		if @disease.update_attributes(params[:disease])
+		if @disease.update(params[:disease])
 			redirect_to @disease
 		else
 			render 'edit'
@@ -38,6 +38,6 @@ class DiseasesController < ApplicationController
 
 	private
 		def find_disease
-			@disease = Disease.find(params[:id])
+			@disease = Disease.get(params[:id])
 		end
 end
