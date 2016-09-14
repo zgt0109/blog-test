@@ -12,12 +12,16 @@ class ApplicationController < ActionController::Base
   	session[:user_id] = nil
   end
 
-  def sign_in(user)
-  	session[:user_id] = user.id
+  def sign_in_user(user)
+    session[:user_id] = user.id
+  end
+
+  def sign_in_doctor(doctor)
+    session[:doctor_id] = doctor.id
   end
 
   def current_user
-  	@current_user ||= User.get(session[:user_id]) if session[:user_id]
+  	@current_user ||= User.get(session[:user_id]) || Doctor.get(session[:doctor_id])
   end
 
   def authenticate

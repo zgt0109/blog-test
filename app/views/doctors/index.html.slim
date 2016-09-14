@@ -4,10 +4,9 @@ table
   thead
     tr
       th 医生姓名
-      th 看过病人姓名
+      th Users
 
   tbody
-    - @doctors.each do |d|
       tr
-        td = d.name
-        td = d.users.map(&:name).join(", ")
+        td = current_user.name
+        td = current_user.users.map(&:name).join(", ")

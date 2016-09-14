@@ -6,13 +6,24 @@ class SessionsController < ApplicationController
   end
 
   def create
-  	@user = User.find(name: params[:name]).first
-  	if @user && @user.authenticate(params[:password])
-  		sign_in @user
-  		redirect_to root_path
-  	else
-  		render sign_in_path
-  	end
+    # binding.pry
+    if params[:doctor_or_user].eql?('user')
+      user = User.all(name: params[:name]).first
+      if user && user.authenticate(params[:password])
+        sign_in_user user
+        redirect_to root_path
+      else
+        render sign_in_path
+      end
+    else
+      doctor = Doctor.all(name: params[:name]).first
+      if doctor && doctor.authenticate(params[:password])
+        sign_in_doctor doctor
+        redirect_to root_path
+      else
+        render sign_in_path
+      end
+    end
   end
 
   def destroy

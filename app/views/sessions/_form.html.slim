@@ -7,5 +7,8 @@
     = label_tag :password
     = password_field_tag :password
 
+  .field
+  	= label_tag :doctor_or_user
+  	= select_tag :doctor_or_user, "<option value='user'>病人</option><option value='doctor'>医生</option>".html_safe
   .action
    = submit_tag "Submit"

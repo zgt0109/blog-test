@@ -9,9 +9,13 @@
 
 <p>Find me in app/views/home/index.html.erb</p>
 
-<h1>Hello, Rails!</h1>
-<%= link_to "My Blog", posts_path %>
-<%= link_to "My Topic", topics_path %>
-<%= link_to "My Disease", diseases_path %>
-<%= link_to "All Users", users_path %>
-<%= link_to "All Doctors", doctors_path %>
+<% if current_user.class.eql?(User) %>
+	<h1>Hello, Users!</h1>
+	<%= link_to "My Blog", posts_path %>
+	<%= link_to "My Topic", topics_path %>
+	<%= link_to "My Disease", diseases_path %>
+	<%= link_to "All Users", users_path %>
+<% else %>
+	<h1>Hello, Doctors!</h1>
+	<%= link_to "All Doctors", doctors_path %>
+<% end %>
