@@ -12,7 +12,7 @@ class Topic
   belongs_to :user
   attr_accessible :content, :name, :user_id
 
-  validates_presence_of :name
+  validates_presence_of :name, :content
 
   paginates_per 2
 end

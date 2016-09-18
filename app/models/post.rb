@@ -12,7 +12,7 @@ class Post
 
   attr_accessible :content, :name, :title, :user_id
 
-  validates_presence_of :name, :title 
+  validates_presence_of :name, :title, :content
   validates_length_of :title, :minimum => 5
 
   has n, :comments

@@ -1,11 +1,9 @@
-= form_for(@topic) do |f|
-	.field 
-		= f.label :name 
-		= f.text_field :name
+= simple_form_for(@topic) do |f|
+  .field 
+    = f.input :name
 
-	.field
-		= f.label :content
-		= f.text_area :content
+  .field
+    = f.input :content
 
-	.action
-		= f.submit "Submit"
+  .action
+    = f.button :submit
