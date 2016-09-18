@@ -12,7 +12,6 @@ class User
 
   has_secure_password
 	attr_accessor :current_password, :password_confirmation
-  attr_reader :password
   attr_accessible :email, :name, :password, :password_confirmation, :current_password
   
   has n, :posts
